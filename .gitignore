@@ -1,5 +1,5 @@
-/.cache
-/dev-data
-/node_modules
+.cache/
+dev-data/
+node_modules/
 package-lock.json
 *.env

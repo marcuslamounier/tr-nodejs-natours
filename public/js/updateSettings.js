@@ -5,15 +5,20 @@ import { showAlert } from './alert';
 // type is either 'password' or 'data'
 export const updateSettings = async (data, type) => {
   try {
-    const baseUrl = 'http://localhost:8000/api/v1/users'
+    const baseUrl = '/api/v1/users';
     const res = await axios({
       method: 'PATCH',
-      url: `${baseUrl}${type === 'password'? '/updateMyPassword' : '/me'}`,
+      url: `${baseUrl}${
+        type === 'password' ? '/updateMyPassword' : '/me'
+      }`,
       data,
     });
 
     if (res.data.status === 'success') {
-      showAlert('success', `${type.toUpperCase()} updated successfully.`);
+      showAlert(
+        'success',
+        `${type.toUpperCase()} updated successfully.`
+      );
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
